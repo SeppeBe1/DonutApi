@@ -8,7 +8,7 @@ const DonutSchema = new Schema({
     dough: String,
 
     companyname: String,
-    street: String,
+    streetname: String,
     housenumber: String,
     city: String,
     postalcode: String,
