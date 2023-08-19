@@ -4,10 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const config = require('config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var donutRouter = require('./routes/api/v1/donuts');
+
+const mongoose = require('mongoose');
+//online
+// mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+//localhost
+mongoose.connect('mongodb://127.0.0.1:27017/Donutello');
 
 var app = express();
 

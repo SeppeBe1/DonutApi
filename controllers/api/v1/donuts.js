@@ -60,19 +60,18 @@ function getAllDonuts(req, res) {
     });
   
     newDonut.save().then(result => {
-  
-      res.json({
-          "status":"succes",
-          "result": result,
-  
-      });
-  }).catch(error => {
-      res.json({
-          "status":"error",
-          "message":error,
-      });
-  }); 
-  }
+        res.json({
+            "status": "success",
+            "result": result
+        });
+    }).catch(error => {
+        console.error("Error while saving new donut:", error); // Log the error
+        res.json({
+            "status": "error",
+            "message": error.message // Provide a meaningful error message
+        });
+    });
+}
 
   module.exports.getAllDonuts = getAllDonuts;
   module.exports.createDonut = createDonut;
