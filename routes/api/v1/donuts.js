@@ -14,11 +14,11 @@ router.post("/", donutController.createDonut);
 
 // PUT /api/vi/users
 
-router.post("/", donutController.updateAnouncement);
+router.post("/", donutController.updateDonut);
 
 
 // DELETE /api/vi/users
 
-router.delete("/:id", anouncementController.deleteAnouncement);
+router.delete("/:id", donutController.deleteDonut);
 
 module.exports = router;
