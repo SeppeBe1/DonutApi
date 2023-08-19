@@ -2,23 +2,17 @@ const express = require("express");
 const router = express.Router();
 const donutController = require("../../../controllers/api/v1/donuts");
 
-// GET /api/vi/users
+// GET /api/vi/donuts
+router.get("/", donutController.getAllDonuts);
+// router.get("/:id", donutController.getDonut);
 
-router.get("/",donutController.getAllDonuts);
-router.get("/:id",donutController.getDonut);
-
-
-// POST /api/vi/users
-
+// POST /api/vi/donuts
 router.post("/", donutController.createDonut);
 
-// PUT /api/vi/users
+// PUT /api/vi/donuts
+// router.put("/:id", donutController.updateDonut);
 
-router.post("/", donutController.updateDonut);
-
-
-// DELETE /api/vi/users
-
-router.delete("/:id", donutController.deleteDonut);
+// DELETE /api/vi/donuts
+// router.delete("/:id", donutController.deleteDonut);
 
 module.exports = router;
