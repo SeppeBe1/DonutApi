@@ -10,7 +10,7 @@ router.get("/:id", donutController.getDonut);
 router.post("/", donutController.createDonut);
 
 // PUT /api/vi/donuts
-// router.put("/:id", donutController.updateDonut);
+router.put("/:id", donutController.updateDonut);
 
 // DELETE /api/vi/donuts
 // router.delete("/:id", donutController.deleteDonut);
