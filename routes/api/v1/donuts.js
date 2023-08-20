@@ -4,7 +4,7 @@ const donutController = require("../../../controllers/api/v1/donuts");
 
 // GET /api/vi/donuts
 router.get("/", donutController.getAllDonuts);
-// router.get("/:id", donutController.getDonut);
+router.get("/:id", donutController.getDonut);
 
 // POST /api/vi/donuts
 router.post("/", donutController.createDonut);

@@ -23,6 +23,31 @@ function getAllDonuts(req, res) {
       .catch(err => res.status(500).json(err));
   }
 
+  function getDonut(req, res) {
+    const { id } = req.params;
+    Donut.findById(id)
+      .then(results => {
+        if (results.length === 0) {
+          res.status(404).json({ 
+            "status": "failed",
+            "result": results
+          });
+        } else {
+          res.json({
+            "status": "success",
+            "result": results,
+          });
+        }
+      })
+      .catch(err => res.status(500).json({
+        "status": "error",
+        "message": err
+      }));
+  }
+
+
+
+
   function createDonut(req, res) {
 
   
@@ -74,4 +99,5 @@ function getAllDonuts(req, res) {
 }
 
   module.exports.getAllDonuts = getAllDonuts;
+  module.exports.getDonut = getDonut;
   module.exports.createDonut = createDonut;
