@@ -13,6 +13,6 @@ router.post("/", donutController.createDonut);
 router.put("/:id", donutController.updateDonut);
 
 // DELETE /api/vi/donuts
-// router.delete("/:id", donutController.deleteDonut);
+router.delete("/:id", donutController.deleteDonut);
 
 module.exports = router;

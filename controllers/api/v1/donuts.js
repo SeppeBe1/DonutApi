@@ -45,33 +45,6 @@ function getAllDonuts(req, res) {
       }));
   }
 
-  function updateDonut(req, res) {
-    const { id } = req.params;
-    
-    Donut.findByIdAndUpdate(id, { orderStatus: req.body.orderStatus}, { new: true })
-      .then(result => {
-        if (!result) {
-          res.status(404).json({
-            "status": "failed",
-            "result": "Donut not found",
-            "data": result
-          });
-        } else {
-          res.json({
-            "status": "success",
-            "data": result
-          });
-        }
-      })
-      .catch(err => res.status(500).json({
-        "status": "failed",
-        "result": err,
-      }));
-  }
-
-
-
-
   function createDonut(req, res) {
 
   
@@ -88,10 +61,7 @@ function getAllDonuts(req, res) {
 
     const orderAmount = req.body.orderAmount;
     const orderStatus = req.body.orderStatus;
-    
-    
-  
-    
+     
     const newDonut = new Donut({
         donutname: donutname ,
         topping: topping,
@@ -122,7 +92,51 @@ function getAllDonuts(req, res) {
     });
 }
 
+function updateDonut(req, res) {
+  const { id } = req.params;
+  
+  Donut.findByIdAndUpdate(id, { orderStatus: req.body.orderStatus}, { new: true })
+    .then(result => {
+      if (!result) {
+        res.status(404).json({
+          "status": "failed",
+          "result": "Donut not found",
+          "data": result
+        });
+      } else {
+        res.json({
+          "status": "success",
+          "data": result
+        });
+      }
+    })
+    .catch(err => res.status(500).json({
+      "status": "failed",
+      "result": err,
+    }));
+}
+
+function deleteDonut(req, res) {
+  const { id } = req.params;
+
+  Donut.findByIdAndDelete(id)
+    .then(result => {
+      if (!result) {
+        res.status(404).json({ 
+          "status": "failed",
+            error: 'Donut not found' });
+      } else {
+        res.json({
+          "status": "success",
+          "data": "Donut deleted"
+        });
+      }
+    })
+    .catch(err => res.status(500).json(err));
+}
+
   module.exports.getAllDonuts = getAllDonuts;
   module.exports.getDonut = getDonut;
-  module.exports.updateDonut = updateDonut;
   module.exports.createDonut = createDonut;
+  module.exports.updateDonut = updateDonut;
+  module.exports.deleteDonut = deleteDonut;
